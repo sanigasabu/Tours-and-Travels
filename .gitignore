@@ -1,20 +1,50 @@
+# # Python-related files
+# *.pyc
+# __pycache__/
+
+# # Virtual environment
+# venv/
+# env/
+# travelenvornmnt/
+
+# # Django-related files
+# db.sqlite3
+# *.log
+
+# # Media and static files
+# /media/
+# /staticfiles/
+# static
+
+# # VSCode
+# .vscode/
+
+# # IDEs
+# .idea/
+
+# # Secrets
+# .env
+
+
 # Python-related files
 *.pyc
 __pycache__/
 
-# Virtual environment
+# Virtual environments
 venv/
 env/
 travelenvornmnt/
+*/env/
+*/venv/
 
 # Django-related files
-/db.sqlite3
+db.sqlite3
 *.log
 
 # Media and static files
 /media/
 /staticfiles/
-static
+static/
 
 # VSCode
 .vscode/
@@ -24,3 +54,4 @@ static
 
 # Secrets
 .env
+*.env.*
