@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simple Map</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <style>
+    #map {
+      height: 400px;
+    }
+  </style>
+</head>
+<body>
+
+<div id="map"></div>
+<input type="hidden" value="{{package_id}}" id="package">
+<script>
+  function fetchLocations() {
+    var packageId = document.getElementById('package').value;
+    var mymap = L.map('map').setView([51.505, -0.09], 13);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(mymap);
+    fetch(`/get_locations/${packageId}/`)
+      .then(response => response.json())
+      .then(locations => {
+        var latlngs = [];
+
+        locations.forEach(location => {
+          const latitude = parseFloat(location.latitude);
+          const longitude = parseFloat(location.longitude);
+          const placeName = location.place_name;
+
+          var marker = L.marker([latitude, longitude]).addTo(mymap);
+          marker.bindPopup(placeName).openPopup();
+          latlngs.push([latitude, longitude]);
+        });
+
+        var bounds = L.latLngBounds(latlngs);
+
+        mymap.fitBounds(bounds);
+      })
+      .catch(error => console.error('Error:', error));
+  }
+  document.addEventListener('DOMContentLoaded', fetchLocations);
+
+</script>
+<button><a href="{% url 'user_packageplace' %}">BACK</a></button>
+</body>
+</html>

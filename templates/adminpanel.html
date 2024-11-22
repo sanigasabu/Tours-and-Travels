@@ -1,0 +1,226 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Travel Admin Panel</title>
+  <!-- Add Bootstrap CSS link -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <!-- Add FontAwesome CSS link -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <!-- Add your custom CSS here -->
+  <style>
+     body {
+    padding-top: 56px;
+    background-image: url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAsJCQcJCQcJCQkJCwkJCQkJCQsJCwsMCwsLDA0QDBEODQ4MEhkSJRodJR0ZHxwpKRYlNzU2GioyPi0pMBk7IRP/2wBDAQcICAsJCxULCxUsHRkdLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCz/wAARCAC0APADASIAAhEBAxEB/8QAGgAAAwEBAQEAAAAAAAAAAAAAAAIDAQQFBv/EAB0QAQEBAQEBAQEBAQAAAAAAAAABAhESMWEhA0H/xAAUAQEAAAAAAAAAAAAAAAAAAAAA/8QAFBEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEQMRAD8A6p086JDSAyS/w86JPhuAySt5TSN4Bf6OU/G8An9H9PwcAn9ZyqcHAT5WXv6pxnAT5f6W9V59LYCV7/S2VWz6WwEr0llWsJYCVlJerWfSWAlZf6S9VsJZ/QSvSWVWwlgJXpNSq0lBK9Jeq0l/6D6OQ0hpDSAyRshpPhuAWT4bhpPhpAJxsh/LZAT4OKeR5BPjOK+WeQS8s4t5LYCVn0ti3PrLAQ8lsW4WwEbC2LWFuQQs+ksXs+kuQQs+ksXufpLmghYSxe5pbkHPYSz6vckuQQsJc/V7ktyD6OQ0h5k0yBJDzJpk0yBJn4aZPM/DTIJ+W+VPLfNBPg8q+R5oJeWeVvNZ5BHyzyv5L5BHyW5XufpfNBC5Lc/XRcl8g5/Jbl0XBbgHNc/SXLpuYW4By3Jbl03BbgHLc0lw6rgtwDkuC3P113BLgHJcfhbj8ddwW4B70yaZUmTTMBOY+HmTzPw8yCUx8NMqTPw0yCXlvhby2ZgI+R5X8jwCHijyv5Z5BDyXy6fJbkEPEL5dHn6XyCFx9L5dFz9L5Bz3JbmOi5Lcg57glw6fJLkHPcfS3DouS3IOa4LcOjyW5Bz3FJcOi5/pbAc9wW4dFn0lyD3Zk0yaZNIBZk8yaZPMgSZ+N8qzPw0wCXlsytMt8fgI+R5X8DyCHkeV/DLkEPJbl0eS3IIefpbmL+S3IIeS8XufpbkELCWL3JbkELC2LXP0lyCNhefVrktyCFhbFrknkErCWLXJLAS4Sz6tYWz6D3ZFJlucqTPwCzP4eZ+fw8ypM/ATmfw8ypMmmQT8N8K+W+QR8t8K+R5BHz+M8L+WeQQ8s8OjyXyDnuf7S3EdPn6S4gOa5/C3P46bktz9By3H4S4dVyS5BzXKdy6rn6S5BzXP0ly6bn6S5BzXJfLouSXIIXJLn66LklyCFz9Lc/i9z9Zcg93OVZkZypIDJlSQSH4DJk3GxoDgkjeN4DODjWgXjOHZwCcZxThQJZ9LZFeFsBKwlytYWwEbCXK9hLKCFz9Jcr2fSWAhc/SXK2iXoIWEsWsJYCVhLFrCWAlYy5V4yz4D3IpJGQ8gNk/ppBIaT8BjeCRvADeAAAGgwNAMY0Azn0vD8Zz8AnPpbOKWfWWAjYSxewlgIWfU7F7CXIIUlXufpLkELOksXuS3IOe5Lcui5JcgjZ9LYtckuQe5MnzK2ZNIDJKaRsjeUGcBuDgM4OG4ALwcNyjlAvBw3KOUC8HDco5QLwcNys4BeM4fgsoJ8Lcq8LYCNz9LcL3LPIOa4+/wlx+Oq5L4By+Pwtx+Oq4LcA5fH4W4/HXcFuAclx+J3DtuE9f5g9SRs41vAZxvBxoM43gADg4AAAAAAAAAAHAAZwNAM4zhmWAzjOG4OASxnlSxnAT8l8rcLwEvLLhbn9ZwELgt/wA3Tcs8gtwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHIAAY0AzjOGAM4yww4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/2Q==);
+    background-color: rgb(236, 231, 231);
+  background-repeat: no-repea]]
+  background-size: cover;
+
+  }
+
+  .sidebar {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+    padding: 20px;
+    background-color: #343a40; /* Dark background color */
+    color: #fff; /* Light text color */
+  }
+
+  .sidebar a {
+    color: #fff; /* Link text color */
+    margin-bottom: 10px; /* Added margin to the bottom of each navigation link */
+    padding: 7px; /* Added padding for better spacing */
+    border-radius: 5px; /* Rounded corners for a cleaner look */
+    transition: background-color 0.3s; /* Smooth transition for background color change */
+  }
+
+  .nav-item-bg {
+    background-color: #17a2b8; /* Background color for nav-item */
+
+  }
+  .nav-item {
+  margin-bottom: 10px; /* Adjust the margin-bottom to add space between each navigation item */
+}
+  .sidebar a:hover {
+    background-color: #495057; /* Darker background color on hover */
+  }
+
+  .sidebar h2 {
+    color: #fcfcfc;/* Heading color */
+    margin-bottom: 20px;
+  }
+  .card {
+  margin-bottom: 20px;
+
+  border: none;
+  border-radius: 25px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  /* Adjust the maximum width of the card */
+  max-width: 400px;
+
+
+}
+
+.card-title {
+  color: #441111;
+  text-align: center;
+  text-shadow: 1px 1px #441111;
+}
+
+.card img {
+  /* Adjust the maximum height of the card image */
+  height: 250px;
+  /* Ensure the image is centered within the card */
+  object-fit: cover;
+   border-radius: 25px;
+}
+
+/* Ensure that card text does not overflow */
+.card-body {
+  overflow: hidden;
+}
+.card:hover {
+  transform: scale(1.05); /* Increase the size on hover */
+  transition: transform 0.3s ease;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Add a subtle box shadow on hover */
+}
+
+
+  .main-content {
+    margin-left: 240px; /* Adjust the margin to match your sidebar width */
+    margin-top: 20px;
+  }
+   .headone{
+  text-align: center;
+  padding: 20px;
+  background-color: #343a40;
+  color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+}
+.headthree{
+  text-shadow: 1px 1px #441111;
+}
+
+</style>
+<head>
+<body>
+<form method="post" action="{% url 'admin_panel' %}">
+    {% csrf_token %}
+
+  <div class="container-fluid">
+    <div class="row">
+      <!-- Sidebar -->
+      <div class="col-md-3 col-lg-2 sidebar">
+        <!-- Sidebar content goes here -->
+        <h2><i class="fas fa-user"></i> ADMIN</h2>
+        <!-- Add your navigation links with icons here -->
+        <ul class="nav flex-column">
+          <li class="nav-item"><a class="nav-link" href="{% url 'index' %}"><i class="fas fa-chart-line"></i> Dashboard</a></li>
+
+          <!-- Flight Dropdown -->
+          <li class="nav-item">
+              <a class="nav-link" data-toggle="collapse" href="#flightSubMenu" aria-expanded="false">
+                  <i class="fas fa-plane"></i> Flight
+              </a>
+              <ul class="collapse list-unstyled" id="flightSubMenu">
+                  <li><a class="nav-link" href="{% url 'add_flight' %}">Add</a></li>
+                  <li><a class="nav-link" href="{% url 'manage_flights' %}">Manage</a></li>
+              </ul>
+          </li>
+            <li class="nav-item">
+              <a class="nav-link" data-toggle="collapse" href="#bookingSubMenu" aria-expanded="false">
+                  <i class="fas fa-hotel"></i> Hotel
+              </a>
+              <ul class="collapse list-unstyled" id="bookingSubMenu">
+                  <li><a class="nav-link" href="{% url 'add_hotel' %}">Add</a></li>
+                  <li><a class="nav-link" href="{% url 'manage_hotels' %}">Manage</a></li>
+              </ul>
+          </li>
+            <li class="nav-item">
+              <a class="nav-link" data-toggle="collapse" href="#packagesSubMenu" aria-expanded="false">
+                    <i class="fas fa-box"></i> Package Place</a>
+                <ul class="collapse list-unstyled" id="packagesSubMenu">
+                  <li><a class="nav-link" href="{% url 'add_packageplace' %}">Add</a></li>
+                  <li><a class="nav-link" href="{% url 'manage_packageplace' %}">Manage</a></li>
+              </ul>
+            </li>
+
+
+          <!-- Package Dropdown -->
+          <li class="nav-item">
+              <a class="nav-link" data-toggle="collapse" href="#packageSubMenu" aria-expanded="false">
+                  <i class="fas fa-boxes-stacked"></i> Package Details
+              </a>
+              <ul class="collapse list-unstyled" id="packageSubMenu">
+                  <li><a class="nav-link" href="{% url 'add_packagedetails' %}">Add</a></li>
+                  <li><a class="nav-link" href="{% url 'manage_packagedetails' %}">Manage</a></li>
+              </ul>
+          </li>
+
+          <!-- Booking Dropdown -->
+            <li class="nav-item">
+              <a class="nav-link" data-toggle="collapse" href="#placeSubMenu" aria-expanded="false">
+                    <i class="fas fa-place-of-worship"></i> Day Planner
+                </a>
+                <ul class="collapse list-unstyled" id="placeSubMenu">
+                  <li><a class="nav-link" href="{% url 'add_planner' %}">Add</a></li>
+                  <li><a class="nav-link" href="{% url 'manage_planner' %}">Manage</a></li>
+              </ul>
+            </li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'save_location' %}"><i class="fa-solid fa-location-dot"></i> Location</a></li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'view_booking' %}"><i class="fas fa-book"></i> Bookings</a></li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'view_user' %}"><i class="fas fa-user"></i> User</a></li>
+            <li class="nav-item"><a class="nav-link" href="{% url 'login' %}"><i class="fa-solid fa-right-from-bracket"></i> Log Out</a></li>
+
+          <!-- Add more navigation links as needed -->
+      </ul>
+      </div>
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
+        <!-- Dashboard content goes here -->
+        <h2 class="headone">TRAVEL AND TOURISM</h2>
+      <h3 class="headthree">Explore Our World!.......</h3>
+      <main>
+        <!-- Bootstrap Cards -->
+        <div class="card-deck">
+          <!-- Card 1 -->
+          <div class="card">
+            <img src="https://th.bing.com/th?id=OIP.-wcXcPg9mUaWmMJuoWXgHgHaE8&w=306&h=204&c=8&rs=1&qlt=90&o=6&pid=3.1&rm=2">
+            <div class="card-body">
+              <h5 class="card-title">HOTELS</h5>
+              <p class="card-text">Indulge in comfort and luxury as you rest your weary feet in our carefully selected hotels. From boutique accommodations to renowned chains, our portfolio ensures a diverse range of options to suit every traveler's taste and budget.</p>
+            </div>
+          </div>
+          <div class="card">
+            <img src="https://th.bing.com/th?id=OIP.lzB898MqHq4kEnw6ItJCKQHaE8&w=306&h=204&c=8&rs=1&qlt=90&o=6&pid=3.1&rm=2">
+            <div class="card-body">
+              <h5 class="card-title">PACKAGES</h5>
+              <p class="card-text">Embark on a journey of discovery and adventure with our meticulously crafted travel packages. At Travel and Tourism, we offer a diverse range of packages designed to cater to every wanderlust's dream. </p>
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="card">
+            <img src="https://th.bing.com/th?id=OIP.laUZxo3zLT0I3Uykbzj_OgHaEj&w=319&h=195&c=8&rs=1&qlt=90&o=6&pid=3.1&rm=2">
+            <div class="card-body">
+              <h5 class="card-title">TRAVEL</h5>
+              <p class="card-text">Embark on a seamless travel experience with our flight services, where convenience and comfort take center stage. Our carefully curated travel packages ensure that your journey is not just a means of reaching your destination but an integral part of your overall travel adventure.</p>
+            </div>
+          </div>
+        </div>
+      </main>
+  <!-- Add Bootstrap JS and Popper.js -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+      </main>
+    </div>
+  </div>
+</form>
+</body>
+</html>

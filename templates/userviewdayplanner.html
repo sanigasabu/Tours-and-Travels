@@ -1,0 +1,55 @@
+{% load static %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns="http://www.w3.org/1999/html">
+<head>
+<title>An Ocean of Sky</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="{% static 'usrpackage/anoceanofsky.css'  %}" />
+</head>
+<body>
+<form method="post" action="">
+    {% csrf_token %}
+<div id="page">
+  <div class="topNaviagationLink"><a href="{% url 'index' %}">Home</a></div>
+
+</div>
+<div id="mainPicture">
+  <div class="picture">
+    <div id="headerTitle">TOURS AND TRAVELS</div>
+    <div id="headerSubtext">Awesome Trails!......</div>
+  </div>
+</div>
+<div class="contentBox">
+  <div class="innerBox">
+    <div class="contentTitle">View Our Packages!.....</div><br>
+<br><br>
+    <div class="contentText">
+      <ul>
+
+        {% for planer in planers %}
+            <li>
+               <strong>package:</strong> {{ planer.package }}<br>
+                <strong>Image:</strong> <img src="{{planer.image.url}}" alt="image" width="200px"><br>
+                <strong>day_number:</strong> {{ planer.day_number }}<br>
+                <strong>breakfast:</strong> {{ planer.breakfast }}<br>
+                <strong>lunch:</strong> {{ planer.lunch }}<br>
+                <strong>visiting_place:</strong> {{ planer.visiting_place }}" <br>
+                <strong>dinner:</strong> {{ planer.dinner }}<br>
+                <strong>details:</strong> {{ planer.details }}<br>
+
+                <hr>
+
+            </li>
+        {% endfor %}
+          <br>
+          <div class="buttons-container">
+                    <button class="edit-button"><a href="{% url 'userbooking' packageid  packageplaceid%}">BookNow</a></button>
+                </div><br>
+    </ul>
+    </div>
+  </div>
+</div>
+<div id="footer"><a href="http://www.aszx.net">web development</a> by <a href="http://www.bryantsmith.com">bryant smith</a> | <a href="http://validator.w3.org/check?uri=referer">valid xhtml</a> | <a href="http://jigsaw.w3.org/css-validator">valid css</a></div>
+</form>
+</body>
+</html>

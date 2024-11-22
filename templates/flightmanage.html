@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Flights</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color:  #bfbfd9;
+            background-image: url(https://th.bing.com/th/id/OIP.nG2Y-Gt1gjE9nB0e54qO9gHaEI?w=283&h=180&c=7&r=0&o=5&pid=1.7);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+        }
+
+        .container {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width:600px;
+
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-bottom: 8px;
+            padding: 10px;
+            background-color: #fff;
+        }
+
+        .flight-info {
+            display: flex;
+            justify-content: space-between;
+        }
+        .buttons-container {
+            display: flex;
+            align-items:center; /* Align buttons to the center vertically */
+        }
+
+        .edit-button,
+        .delete-button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 8px 16px; /* Set fixed padding (top/bottom: 8px, left/right: 16px) */
+            width: 80px; /* Set fixed width */
+            height: 30px; /* Set fixed height */
+            border-radius: 4px;
+            cursor: pointer;
+            margin-left: 10px; /* Set fixed margin between buttons */
+        }
+
+        .edit-button:hover,
+        .delete-button:hover {
+            background-color: #0056b3;
+        }
+
+        .delete-button {
+            background-color: #dc3545;
+        }
+
+        .delete-button:hover {
+            background-color: #c82333;
+        }
+        a{
+        text-decoration:none;
+        color:white;
+        }
+         .back-link {
+    text-decoration: none;
+    color:black;
+    margin-bottom: 16px;
+    display: inline-block;
+}
+
+.back-link:hover {
+    text-decoration: none;
+}
+    </style>
+</head>
+<body>
+<form method="post" action="{% url 'manage_flights' %}">
+    {% csrf_token %}
+<div class="container">
+        <a href="{% url 'admin_panel' %}" class="back-link">&#8592;Home</a>
+    <h2>Manage Flights</h2>
+    <ul>
+        {% for flight in flights %}
+            <li>
+                <div class="flight-info">
+                    <div>
+                        <strong>Flight_No:</strong> {{ flight.flight_no }}<br>
+                        <strong>Departure_City:</strong> {{ flight.departure_city }}<br>
+                        <strong>Arrival_City:</strong> {{ flight.arrival_city }}<br>
+                        <strong>Departure_Date:</strong> {{ flight.departure_date }}<br>
+                        <strong>Arrival_Date:</strong> {{ flight.arrival_date }}<br>
+                        <strong>Duration:</strong> {{ flight.duration }}<br>
+                        <strong>Ticket_Rate:</strong> ${{ flight.tickate_rate }}<br>
+                        <strong>Airline:</strong> {{ flight.airline }}<br>
+                    </div>
+                    <button class="edit-button"><a href="{% url 'edit_flights' id=flight.id %}">Edit</a></button>
+                    <button class="delete-button"><a href="{% url 'delete_flights' id=flight.id %}">Delete</a></button>
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+</form>
+</body>
+</html>

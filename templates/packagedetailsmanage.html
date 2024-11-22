@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Package</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #bfbfd9;
+            background-image: url(https://th.bing.com/th/id/OIP.nG2Y-Gt1gjE9nB0e54qO9gHaEI?w=283&h=180&c=7&r=0&o=5&pid=1.7);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+        }
+
+        .container {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 600px;
+
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-bottom: 8px;
+            padding: 10px;
+            background-color: #fff;
+        }
+
+        .package-info {
+            display: flex;
+            justify-content: space-between;
+        }
+        .buttons-container {
+            display: flex;
+            align-items:center; /* Align buttons to the center vertically */
+        }
+
+        .edit-button,
+        .delete-button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 8px 16px; /* Set fixed padding (top/bottom: 8px, left/right: 16px) */
+            width: 80px; /* Set fixed width */
+            height: 30px; /* Set fixed height */
+            border-radius: 4px;
+            cursor: pointer;
+            margin-left: 10px; /* Set fixed margin between buttons */
+        }
+
+        .edit-button:hover,
+        .delete-button:hover {
+            background-color: #0056b3;
+        }
+
+        .delete-button {
+            background-color: #dc3545;
+        }
+
+        .delete-button:hover {
+            background-color: #c82333;
+        }
+        a{
+        text-decoration:none;
+        color:white;
+        }
+        .back-link {
+    text-decoration: none;
+    color:black;
+    margin-bottom: 16px;
+    display: inline-block;
+}
+
+.back-link:hover {
+    text-decoration: none;
+}
+
+    </style>
+</head>
+<body>
+<form method="post" action="{% url 'manage_packagedetails' %}">
+    {% csrf_token %}
+<div class="container">
+            <a href="{% url 'admin_panel' %}" class="back-link">&#8592;Home</a>
+
+    <h2>Package Details List</h2>
+    <ul>
+        {% for package_details in packages %}
+            <li>
+                <strong>Package Name:</strong> {{ package_details.package_name }}<br>
+                <strong>Place:</strong> {{ package_details.place }}<br>
+                <strong>Package Type:</strong> {{ package_details.package_type }}<br>
+                <strong>Description:</strong> {{ package_details.description }}<br>
+                <strong>Image:</strong> <img src="{{ package_details.image.url }}" alt="{{ package_details.package_type }} image" width="200"><br>
+                <strong>Total Days:</strong> {{ package_details.total_days }}<br>
+                <strong>total_amount:</strong> {{ package_details.total_amount }}<br>
+
+                <strong>Go Flights:</strong>
+                <ul>
+                    {% for go_flight in package_details.go_flights.all %}
+                        <li>{{ go_flight.flight_no }} {{ go_flight.departure_city }} to {{ go_flight.arrival_city }} ({{ go_flight.departure_date }})</li>
+                    {% endfor %}
+                </ul>
+
+                <strong>Return Flights:</strong>
+                <ul>
+                    {% for return_flight in package_details.return_flights.all %}
+                        <li>{{ return_flight.flight_no }} {{ return_flight.departure_city }} to {{ return_flight.arrival_city }} ({{ return_flight.departure_date }})</li>
+                    {% endfor %}
+                </ul>
+                <strong>Inclusion:</strong> {{ package_details.inclusion }}<br>
+
+                <hr>
+                <div class="buttons-container">
+                    <button class="edit-button"><a href="{% url 'edit_Packagedetails' id=package_details.id %}">Edit</a></button>
+                    <button class="delete-button"><a href="{% url 'delete_Packagedetails' id=package_details.id %}">Delete</a></button>
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+</form>
+</body>
+</html>

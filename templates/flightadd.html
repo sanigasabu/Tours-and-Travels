@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Flight</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #bfbfd9;
+            background-image: url(https://th.bing.com/th/id/OIP.nG2Y-Gt1gjE9nB0e54qO9gHaEI?w=283&h=180&c=7&r=0&o=5&pid=1.7);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+        }
+
+        .container {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #007bff;
+            color: #ffffff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+        a{
+        text-decoration:none;
+        color:white;
+        }
+        .back-link {
+    text-decoration: none;
+    color:black;
+    margin-bottom: 16px;
+    display: inline-block;
+}
+
+.back-link:hover {
+    text-decoration: none;
+}
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <a href="{% url 'admin_panel' %}" class="back-link">&#8592; Home</a>
+    <h2>Add Flight</h2>
+
+    <form method="post" action="{% url 'add_flight' %}" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <label for="{{ form.flight_no.id_for_label }}">Flight_No:</label>
+        {{ form.flight_no }}
+
+        <label for="{{ form.departure_city.id_for_label }}">Departure_City:</label>
+        {{ form.departure_city }}
+
+        <label for="{{ form.arrival_city.id_for_label }}">Arrival_City:</label>
+        {{ form.arrival_city }}
+
+        <label for="{{ form.departure_date.id_for_label }}">Departure_Date:</label>
+        {{ form.departure_date }}
+
+        <label for="{{ form.arrival_date.id_for_label }}">Arrival_Date:</label>
+        {{ form.arrival_date }}
+
+        <label for="{{ form.duration.id_for_label }}"></label>
+        {{ form.duration }}
+
+        <label for="{{ form.tickate_rate.id_for_label }}">Ticket_Rate:</label>
+        {{ form.tickate_rate }}
+
+        <label for="{{ form.airline.id_for_label }}">Airline:</label>
+        {{ form.airline }}
+
+        <button type="submit">Submit</button>
+        <button type="button" onclick="window.location.href='{% url 'manage_flights' %}'">Manage Flight</button>
+    </form>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Function to calculate duration based on departure and arrival dates
+        function calculateDuration() {
+            const departureDate = new Date(document.getElementById('{{ form.departure_date.id_for_label }}').value);
+            const arrivalDate = new Date(document.getElementById('{{ form.arrival_date.id_for_label }}').value);
+
+            if (!isNaN(departureDate.getTime()) && !isNaN(arrivalDate.getTime())) {
+                const duration = arrivalDate - departureDate;
+                const hours = Math.floor(duration / (60 * 60 * 1000));
+                const minutes = Math.floor((duration % (60 * 60 * 1000)) / (60 * 1000));
+
+                const durationInput = document.getElementById('{{ form.duration.id_for_label }}');
+                durationInput.value = hours + ' hours ' + minutes + ' minutes';
+            }
+        }
+
+        // Call the calculateDuration function initially
+        calculateDuration();
+
+        // Attach the calculateDuration function to change events on departure and arrival date inputs
+        document.getElementById('{{ form.departure_date.id_for_label }}').addEventListener('change', calculateDuration);
+        document.getElementById('{{ form.arrival_date.id_for_label }}').addEventListener('change', calculateDuration);
+    });
+</script>
+</body>
+
+</html>

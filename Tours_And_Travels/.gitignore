@@ -1,0 +1,40 @@
+# Ignore Python bytecode
+*.pyc
+*.pyo
+__pycache__/
+
+# Ignore environment settings
+env/
+travelenvornmnt/
+*.env
+
+# Ignore virtual environment folders
+venv/
+ENV/
+env.bak/
+env/
+
+# Ignore Django database
+db.sqlite3
+*.sqlite3
+
+# Ignore Django migration files
+*/migrations/*
+
+# Ignore media/uploads
+media/
+*.log
+
+# Ignore static files collected by collectstatic
+staticfiles/
+static/
+
+# Ignore IDE files and folders
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Ignore system files
+.DS_Store
+Thumbs.db

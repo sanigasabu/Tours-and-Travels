@@ -1,0 +1,19 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="PyUnresolvedReferencesInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredIdentifiers">
+        <list>
+          <option value="Toursapp.models.TourDayPlanner.objects" />
+          <option value="str.queryset" />
+          <option value="Toursapp.models.Package_detail.objects" />
+          <option value="Toursapp.models.Flight.objects" />
+          <option value="Toursapp.models.Package_place.objects" />
+          <option value="Toursapp.models.Location.objects" />
+          <option value="Toursapp.models.memberaccount.objects" />
+          <option value="Toursapp.models.UserBooking.objects" />
+        </list>
+      </option>
+    </inspection_tool>
+  </profile>
+</component>
